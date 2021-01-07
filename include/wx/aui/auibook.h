@@ -303,6 +303,7 @@ public:
     int SetSelection(size_t newPage) wxOVERRIDE;
     int GetSelection() const wxOVERRIDE;
 
+    virtual void UnSplit(size_t pageSrc, size_t pageDst);
     virtual void Split(size_t page, int direction);
 
     const wxAuiManager& GetAuiManager() const { return m_mgr; }
