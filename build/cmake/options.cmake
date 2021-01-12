@@ -64,6 +64,8 @@ else()
 endif()
 wx_option(wxBUILD_STRIPPED_RELEASE "remove debug symbols in release build" ${wxBUILD_STRIPPED_RELEASE_DEFAULT})
 mark_as_advanced(wxBUILD_STRIPPED_RELEASE)
+wx_option(wxBUILD_PIC "Enable position independent code (PIC)." ON)
+mark_as_advanced(wxBUILD_PIC)
 wx_option(wxUSE_NO_RTTI "disable RTTI support" OFF)
 
 # STL options
@@ -107,6 +109,7 @@ if(UNIX)
     wx_option(wxUSE_XTEST "use XTest extension")
     wx_option(wxUSE_LIBMSPACK "use libmspack (CHM help files loading)")
     wx_option(wxUSE_LIBGNOMEVFS "use GNOME VFS for associating MIME types")
+    wx_option(wxUSE_GLCANVAS_EGL "use EGL backend for wxGLCanvas")
 
     set(wxTHIRD_PARTY_LIBRARIES ${wxTHIRD_PARTY_LIBRARIES} wxUSE_LIBSDL "use SDL for audio on Unix")
     set(wxTHIRD_PARTY_LIBRARIES ${wxTHIRD_PARTY_LIBRARIES} wxUSE_LIBMSPACK "use libmspack (CHM help files loading)")

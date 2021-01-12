@@ -220,6 +220,17 @@ public:
                               const wxSize& size = wxDefaultSize,
                               long style = 0,
                               const wxString& name = wxWebViewNameStr) = 0;
+    /**
+        Function to check if the backend is available at runtime. The
+        wxWebView implementation can use this function to check all
+        runtime requirements without trying to create a wxWebView.
+
+        @return returns @true if the backend can be used or @false if it is
+            not available during runtime.
+
+        @since 3.1.5
+    */
+    virtual bool IsAvailable();
 };
 
 /**
@@ -252,6 +263,20 @@ public:
         @return The name of the scheme, as passed to the constructor.
     */
     virtual wxString GetName() const;
+
+    /**
+        Sets a custom security URL. Only used by wxWebViewIE.
+
+        @since 3.1.5
+    */
+    virtual void SetSecurityURL(const wxString& url);
+
+    /**
+        @return The custom security URL. Only used by wxWebViewIE.
+
+        @since 3.1.5
+    */
+    virtual wxString GetSecurityURL() const;
 };
 
 /**
@@ -290,7 +315,7 @@ public:
     This backend is not enabled by default, to build it follow these steps:
     - Visual Studio 2015, or newer, is required
     - Download the <a href="https://aka.ms/webviewnuget">WebView2 SDK</a>
-      nuget package (Version 0.9.488 or newer)
+      nuget package (Version 1.0.622.22 or newer)
     - Extract the package (it's a zip archive) to @c wxWidgets/3rdparty/webview2
       (you should have @c 3rdparty/webview2/build/native/include/WebView2.h
       file after unpacking it)
